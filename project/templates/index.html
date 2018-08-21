@@ -7,9 +7,11 @@
                 <input type="text" name="input_url" placeholder="Enter a url">
                 <input type="submit" name="submiturl" value="Submit Url">
             </form>
+    {% if job_id %}<font size="-2">Job has been added to the queue with job id {{ job_id }}</font>{% endif %}
         </div>
     {% if urls %}
         <div align="center">
+            <font size="+2"><br>Previously completed jobs</font>
             <table>
                 <tr>
                     <th align="center">Url</th>

@@ -1,7 +1,6 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from rq import Queue
-from rq.job import Job
 
 from settings import settings
 from worker import conn

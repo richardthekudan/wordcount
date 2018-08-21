@@ -8,11 +8,11 @@ tasks = Blueprint('tasks', __name__, template_folder='templates')
 
 @tasks.route('/', methods=['GET', 'POST'])
 def home():
-    if request.method == 'POST':
+    urls = Url.query.distinct(Url.url).all()
+    if request.method == 'POST' and request.form['input_url']:
         url = request.form['input_url']
         job = q.enqueue_call(func=count_words_at_url, args=(url,))
-
-    urls = Url.query.distinct(Url.url).all()
+        return render_template('index.html', urls=urls, job_id=job.id)
     return render_template('index.html', urls=urls)
 
 
